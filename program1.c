@@ -19,6 +19,7 @@ void print(int* arr , int n){
     }printf("\n");
 }
 
+
 // bubble sort in array
 void bubbleSort(int* arr, int size){
     for (int i = 0 ; i < size-1 ; i++){
@@ -60,6 +61,7 @@ int main(int argc, char const *argv[])
     }else{
         printf("element is present at index %d\n",index);
     }
+    
 
     // sorting of array
 
@@ -74,6 +76,52 @@ int main(int argc, char const *argv[])
     printf("array after sort is \n");
     print(arr,size);
 
+
+    // deletion
+    int item;
+    printf("enter element that u want to delete: ");
+    scanf("%d",&item);
+    int new_size = size-1;
+    int* new_arr = (int *)(malloc(new_size* sizeof(int)));
+    int i = 0; 
+    int j = 0;
+    int flag = 0;
+
+    while (i < size && j < size-1){
+        if (arr[i] == item && flag == 0){
+            i++;
+            flag = 1;
+            continue;
+        }else{
+            new_arr[j] = arr[i];
+            i++;
+            j++;
+        }
+    }
+
+    if (flag){
+        arr = new_arr;
+        size--;
+    }
+
+    printf("array after deletion of %d is: \n",item );
+    print(arr,size);
+
+
+    // updation
+    int idx , val;
+    printf("enter index where u want to update and enter value below : \n");
+    scanf("%d %d",&idx, &val);
+
+    for (int i = 0 ; i < size ; i++){
+        if (i == idx && idx >=0 && idx < size){
+            arr[i] = val;
+            break;
+        }
+    }
+
+    printf("after updation is: \n");
+    print(arr,size);
 
     return 0;
 }
