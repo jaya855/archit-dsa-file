@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#define true 1
+#define false 0
 
 // decorate
 void star(){
@@ -12,6 +14,7 @@ typedef struct Node
     int data;
     struct Node *next;
 } Node;
+
 
 // create an constructor
 Node *createNode(int data)
@@ -48,7 +51,7 @@ void insert(Node **head, int data, int index)
         Node *temp = createNode(data);
         Node *it = *head;
         int count = 0;
-        while (temp != NULL && count < index - 1)
+        while (it != NULL && count < index - 1)
         {
             if (it->next == NULL)
                 break;
@@ -165,7 +168,7 @@ void print(Node *head)
     printf("\n");
 }
 
-int main(int argc, char const *argv[])
+int main()
 {
     // declare variables
     int data, index;
